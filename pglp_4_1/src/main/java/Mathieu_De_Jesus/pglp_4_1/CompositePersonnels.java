@@ -1,8 +1,9 @@
 package Mathieu_De_Jesus.pglp_4_1;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class CompositePersonnels implements InterfacePersonnels {
+public class CompositePersonnels implements InterfacePersonnels, Iterable<InterfacePersonnels>{
 
 	private ArrayList<InterfacePersonnels> personnels;
 	
@@ -20,5 +21,9 @@ public class CompositePersonnels implements InterfacePersonnels {
 	public CompositePersonnels remove(InterfacePersonnels ip) {
 		if(personnels.contains(ip) == true) personnels.remove(ip);
 		return this;
+	}
+
+	public Iterator<InterfacePersonnels> iterator() {
+		return personnels.iterator();
 	}
 }
