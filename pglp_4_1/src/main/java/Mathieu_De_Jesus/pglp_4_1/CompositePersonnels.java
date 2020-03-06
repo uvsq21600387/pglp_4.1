@@ -6,8 +6,16 @@ import java.util.Iterator;
 public class CompositePersonnels implements InterfacePersonnels, Iterable<InterfacePersonnels>{
 
 	private ArrayList<InterfacePersonnels> personnels;
+	private final int id;
+	private static int idNext = 1; 
+	
+	public CompositePersonnels() {
+		id = idNext++;
+		personnels = new ArrayList<InterfacePersonnels>();
+	}
 	
 	public void print() {
+		System.out.println("Id : " + id);
 		for(InterfacePersonnels ip : personnels) {
 			ip.print();
 		}
@@ -25,5 +33,9 @@ public class CompositePersonnels implements InterfacePersonnels, Iterable<Interf
 
 	public Iterator<InterfacePersonnels> iterator() {
 		return personnels.iterator();
+	}
+	
+	public final int getId() {
+		return id;
 	}
 }
