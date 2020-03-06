@@ -3,38 +3,73 @@ package Mathieu_De_Jesus.pglp_4_1;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class CompositePersonnels implements InterfacePersonnels, Iterable<InterfacePersonnels>{
-
+/**
+ * pattern composite associé à l'interface InterfacePersonnels.
+ */
+public class CompositePersonnels
+implements InterfacePersonnels, Iterable<InterfacePersonnels> {
+	/**
+	 * liste des personnes.
+	 */
 	private ArrayList<InterfacePersonnels> personnels;
+	/**
+	 * identifiant pour identifier un composite.
+	 */
 	private final int id;
-	private static int idNext = 1; 
-	
+	/**
+	 * pour attribuer un identifiant différent à chaque construction.
+	 */
+	private static int idNext = 1;
+	/**
+	 * constructeur de la classe.
+	 */
 	public CompositePersonnels() {
 		id = idNext++;
 		personnels = new ArrayList<InterfacePersonnels>();
 	}
-	
+	/**
+	 * implémente la méthode print() de l'interface InterfacePersonnels.
+	 */
 	public void print() {
 		System.out.println("Id : " + id);
-		for(InterfacePersonnels ip : personnels) {
+		for (InterfacePersonnels ip : personnels) {
 			ip.print();
 		}
 	}
-	
-	public CompositePersonnels add(InterfacePersonnels ip) {
-		if(personnels.contains(ip) == false) personnels.add(ip);
+	/**
+	 * ajoute une personne à la liste
+	 * si celle-ci n'est pas déjà dans la liste.
+	 * @param ip la personne à ajouter
+	 * @return lui-même
+	 */
+	public CompositePersonnels add(final InterfacePersonnels ip) {
+		if (!personnels.contains(ip)) {
+			personnels.add(ip);
+		}
 		return this;
 	}
-	
-	public CompositePersonnels remove(InterfacePersonnels ip) {
-		if(personnels.contains(ip) == true) personnels.remove(ip);
+	/**
+	 * supprime une personne de la liste si celle-ci est dans la liste.
+	 * @param ip la personne à retirer de la liste
+	 * @return lui-même
+	 */
+	public CompositePersonnels remove(final InterfacePersonnels ip) {
+		if (personnels.contains(ip)) {
+			personnels.remove(ip);
+		}
 		return this;
 	}
-
+	/**
+	 * obtenir un itérateur su la liste des personnes de ce composite.
+	 * @return iterateur sur la liste des personnes de ce composite
+	 */
 	public Iterator<InterfacePersonnels> iterator() {
 		return personnels.iterator();
 	}
-	
+	/**
+	 * getter sur l'identifiant de ce composite.
+	 * @return l'identifiant
+	 */
 	public final int getId() {
 		return id;
 	}
