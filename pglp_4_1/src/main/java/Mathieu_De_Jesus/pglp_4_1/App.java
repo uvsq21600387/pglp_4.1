@@ -15,47 +15,6 @@ public final class App {
 	private App() {
 	}
 	/**
-	 * affiche sous forme de parcours en largeur.
-	 * @param ip InterfacePersonnel à afficher
-	 */
-	public static void parcoursLargeur(final InterfacePersonnels ip) {
-		if (ip.getClass() == CompositePersonnels.class) {
-			InterfacePersonnels y, z;
-			CompositePersonnels tmp;
-			ArrayDeque<InterfacePersonnels> c =
-				new ArrayDeque<InterfacePersonnels>();
-			ArrayDeque<InterfacePersonnels> d =
-				new ArrayDeque<InterfacePersonnels>();
-			d.add(ip);
-			while (!d.isEmpty()) {
-				y = d.pollFirst();
-				c.add(y);
-				if (y.getClass() == CompositePersonnels.class) {
-					tmp = (CompositePersonnels) y;
-					Iterator<InterfacePersonnels> ite =
-						tmp.iterator();
-					while (ite.hasNext()) {
-						z = ite.next();
-						if (!d.contains(z) && !c.contains(z)) {
-							d.add(z);
-						}
-					}
-				}
-			}
-			//affichage du parcours
-			for (InterfacePersonnels c2 : c) {
-				if (c2.getClass() == CompositePersonnels.class) {
-					tmp = (CompositePersonnels) c2;
-					System.out.println(tmp.getId());
-				} else {
-					c2.print();
-				}
-			}
-		} else {
-			ip.print();
-		}
-	}
-	/**
 	 * début du programme.
 	 * @param args arguments donnés au démarrage de l'application
 	 */
@@ -80,7 +39,9 @@ public final class App {
         c1.add(c2);
         c1.add(c3);
         System.out.println("Parcours en largeur : ");
-        parcoursLargeur(c1);
+        AfficheParGroupe apg = new AfficheParGroupe();
+        apg.parcoursLargeur(c1);
+        apg.print();
         System.out.println("\n\nParcours en profondeur : ");
         c1.print();
     }
