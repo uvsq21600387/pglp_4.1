@@ -1,23 +1,18 @@
 package Mathieu_De_Jesus.pglp_4_1;
 
+import static org.junit.Assert.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-/**
- * appel à la classe Personnel.
- */
-public final class App {
-	/**
-	 * constructeur de la classe App.
-	 */
-	private App() {
-	}
-	/**
-	 * début du programme.
-	 * @param args arguments donnés au démarrage de l'application
-	 */
-    public static void main(final String[] args) {
-    	CompositePersonnels c1 = new CompositePersonnels();
+import org.junit.Test;
+
+public class AffichageParGroupeTest {
+
+	@Test
+	public void test() {
+		CompositePersonnels c1 = new CompositePersonnels();
     	CompositePersonnels c2 = new CompositePersonnels();
     	CompositePersonnels c3 = new CompositePersonnels();
     	CompositePersonnels c4 = new CompositePersonnels();
@@ -36,11 +31,23 @@ public final class App {
         c3.add(c5);
         c1.add(c2);
         c1.add(c3);
-        System.out.println("Parcours en largeur : ");
         AfficheParGroupe apg = new AfficheParGroupe();
         apg.parcoursLargeur(c1);
-        apg.print();
-        System.out.println("\n\nParcours en profondeur : ");
-        c1.print();
-    }
+        Iterator<InterfacePersonnels> tmp = apg.iterator();
+        
+        ArrayList<InterfacePersonnels> list = new ArrayList<InterfacePersonnels>();
+        ArrayList<InterfacePersonnels> list2 = new ArrayList<InterfacePersonnels>();
+        
+        for (; tmp.hasNext(); list.add(tmp.next()));
+        list2.add(c1);
+        list2.add(c2);
+        list2.add(c3);
+        list2.add(c4);
+        list2.add(c5);
+        list2.add(c6);
+        list2.add(c7);
+        list2.add(p);
+        assertTrue(list.toString().equalsIgnoreCase(list2.toString()));
+	}
+
 }

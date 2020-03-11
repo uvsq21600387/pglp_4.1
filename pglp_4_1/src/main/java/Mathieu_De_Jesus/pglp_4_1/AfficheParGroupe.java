@@ -10,7 +10,8 @@ public class AfficheParGroupe implements Iterable<InterfacePersonnels> {
 	/**
 	 * liste rempli avec le parcours en largeur.
 	 */
-	private ArrayDeque<InterfacePersonnels> c;
+	private ArrayDeque<InterfacePersonnels> c
+	= new ArrayDeque<InterfacePersonnels>();
 	/**
 	 * affiche sous forme de parcours en largeur.
 	 * @param ip InterfacePersonnel à afficher
