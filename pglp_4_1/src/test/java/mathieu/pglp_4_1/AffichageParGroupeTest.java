@@ -1,4 +1,4 @@
-package Mathieu_De_Jesus.pglp_4_1;
+package mathieu.pglp_4_1;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.junit.Test;
+
+import mathieu.pglp_4_1.Personnel.Builder;
 
 public class AffichageParGroupeTest {
 

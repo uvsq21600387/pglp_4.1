@@ -1,4 +1,4 @@
-package Mathieu_De_Jesus.pglp_4_1;
+package mathieu.pglp_4_1;
 
 import static org.junit.Assert.*;
 

@@ -1,9 +1,11 @@
-package Mathieu_De_Jesus.pglp_4_1;
+package mathieu.pglp_4_1;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.Test;
+
+import mathieu.pglp_4_1.Personnel.Builder;
 
 /**
  * tests unitaires sur la classe Personnel.
